@@ -11,7 +11,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
   showCustomization();
 
-  const cardState = initState();
+  const cardState = {};
+  initState(cardState);
+  console.log(cardState);
 
   changeStateByInput(cardState, '.custom', '.custom-info', 'input:not([type="radio"])', 'input[type="radio"]', 
     'select', 'textarea');

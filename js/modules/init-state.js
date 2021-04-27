@@ -28,8 +28,6 @@ function initState(state = {}) {
   textarea.value = '';
   state[textarea.name] = textarea.value;
 
-  return state;
-
 }
 
 export default initState;
