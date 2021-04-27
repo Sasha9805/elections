@@ -6,6 +6,7 @@ import createCandidate from './modules/create-candidate';
 import changeStateByInput from './modules/change-state-by-input';
 import honestVoting from './modules/honest-voting';
 import crimeVoting from './modules/crime-voting';
+import reset from './modules/reset';
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -26,5 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   honestVoting('#voting', '.progress-bar', '.main-cards','.main-cards-item', '.result-count');
   crimeVoting('#crime', '.progress-bar', '.main-cards','.main-cards-item', '.result-count');
+
+  reset(cardState, '#reset', '.main-cards', '.main-cards-item', '.result-count', '.progress-bar');
 
 });
