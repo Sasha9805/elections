@@ -7,8 +7,6 @@ function createCandidate(state, btnSelector, constructSelector, cardsSelector) {
 
   btnCreate.addEventListener('click', () => {
 
-    console.log(state);
-
     const div = document.createElement('div');
     div.classList.add('main-cards-item');
 
@@ -20,7 +18,7 @@ function createCandidate(state, btnSelector, constructSelector, cardsSelector) {
         <div class="result">
           <div class="result-count">0%</div>
           <div class="progress">
-            <div class="progress-bar"></div>
+            <div class="progress-bar progress-bar-1"></div>
           </div>
         </div>
       </div>

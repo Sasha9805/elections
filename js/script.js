@@ -4,6 +4,8 @@ import initState from './modules/init-state';
 import slider from './modules/slider';
 import createCandidate from './modules/create-candidate';
 import changeStateByInput from './modules/change-state-by-input';
+import honestVoting from './modules/honest-voting';
+import crimeVoting from './modules/crime-voting';
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -19,5 +21,8 @@ window.addEventListener('DOMContentLoaded', () => {
   slider(cardState, '.custom-style', '.clothes', '.clothes-style', '.prev', '.next', 'clothesId');
 
   createCandidate(cardState, '#ready', '.construct', '.main-cards');
+
+  honestVoting('#voting', '.progress-bar', '.main-cards','.main-cards-item', '.result-count');
+  crimeVoting('#crime', '.progress-bar', '.main-cards','.main-cards-item', '.result-count');
 
 });
