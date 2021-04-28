@@ -1,14 +1,13 @@
-function createCandidate(state, btnSelector, constructSelector, cardsSelector) {
+function createCandidate(state, btnSelector, constructSelector, cardsSelector, activeClass) {
 
   const main = document.querySelector('.main'),
         custom = document.querySelector('.custom'),
         btnCreate = document.querySelector(btnSelector),
         mainCards = document.querySelector(cardsSelector);
 
-  btnCreate.addEventListener('click', () => {
-
+  function createBox(activeClass, constructSelector) {
     const div = document.createElement('div');
-    div.classList.add('main-cards-item');
+    div.classList.add(activeClass);
 
     const photoCandidate = custom.querySelector(constructSelector).cloneNode(true);
 
@@ -34,8 +33,10 @@ function createCandidate(state, btnSelector, constructSelector, cardsSelector) {
 
     div.querySelector('.photo').replaceWith(photoCandidate);
 
-    mainCards.children[0].after(div);
+    return div;
+  }
 
+  function showMainScreen() {
     custom.classList.remove('animate__slideInUp');
     main.classList.remove('animate__slideOutLeft');
 
@@ -46,6 +47,14 @@ function createCandidate(state, btnSelector, constructSelector, cardsSelector) {
       main.style.display = '';
       custom.style.display = '';
     }, 1000);
+  }
+
+  btnCreate.addEventListener('click', () => {
+
+    const div = createBox(activeClass, constructSelector);
+    mainCards.children[0].after(div);
+
+    showMainScreen();
 
   });
 

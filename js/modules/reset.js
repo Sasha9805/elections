@@ -1,11 +1,12 @@
 import initState from "./init-state";
 import slider from './slider';
 
-function reset(state, btnSelector, cardsWrapperSelector, cardsSelector, resultSelector, progressBarSelector) {
+function reset(state, btnSelector, customSelector, 
+  mainSelector, cardsWrapperSelector, cardsSelector, resultSelector, progressBarSelector) {
 
   const btnReset = document.querySelector(btnSelector);
 
-  btnReset.addEventListener('click', () => {
+  function resetCards(cardsWrapperSelector, cardsSelector, resultSelector, progressBarSelector) {
 
     const cards = document.querySelectorAll(cardsSelector);
     cards[1].remove();
@@ -22,19 +23,16 @@ function reset(state, btnSelector, cardsWrapperSelector, cardsSelector, resultSe
       bar.style.height = '';
     });
 
-    initState(state);
+  }
 
-    slider(state, '.custom-style', '.skin', '.skin-color', '.prev', '.next', 'skinId');
-    slider(state, '.custom-style', '.hair', '.hair-style', '.prev', '.next', 'hairId');
-    slider(state, '.custom-style', '.clothes', '.clothes-style', '.prev', '.next', 'clothesId');
-    console.log(state);
+  function resetCustomStyles(customSelector, mainSelector) {
 
-    const custom = document.querySelector('.custom'),
-          main = document.querySelector('.main');
+    const custom = document.querySelector(customSelector),
+          main = document.querySelector(mainSelector);
 
     custom.classList.remove('animate__slideOutUp');
     main.classList.remove('animate__slideInLeft');
-    
+
     custom.classList.add('animate__slideInUp');
     main.classList.add('animate__slideOutLeft');
 
@@ -42,6 +40,21 @@ function reset(state, btnSelector, cardsWrapperSelector, cardsSelector, resultSe
       main.style.display = 'none';
       custom.style.display = 'flex';
     }, 1000);
+
+  }
+
+  btnReset.addEventListener('click', () => {
+
+    resetCards(cardsWrapperSelector, cardsSelector, resultSelector, progressBarSelector);
+
+    initState(state);
+
+    slider(state, '.custom-style', '.skin', '.skin-color', '.prev', '.next', 'skinId');
+    slider(state, '.custom-style', '.hair', '.hair-style', '.prev', '.next', 'hairId');
+    slider(state, '.custom-style', '.clothes', '.clothes-style', '.prev', '.next', 'clothesId');
+    console.log(state);
+
+    resetCustomStyles(customSelector, mainSelector);
 
   });
 

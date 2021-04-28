@@ -23,11 +23,11 @@ window.addEventListener('DOMContentLoaded', () => {
   slider(cardState, '.custom-style', '.hair', '.hair-style', '.prev', '.next', 'hairId');
   slider(cardState, '.custom-style', '.clothes', '.clothes-style', '.prev', '.next', 'clothesId');
 
-  createCandidate(cardState, '#ready', '.construct', '.main-cards');
+  createCandidate(cardState, '#ready', '.construct', '.main-cards', 'main-cards-item');
 
-  honestVoting('#voting', '.progress-bar', '.main-cards','.main-cards-item', '.result-count');
-  crimeVoting('#crime', '.progress-bar', '.main-cards','.main-cards-item', '.result-count');
+  honestVoting('#voting', '.progress-bar', '.main-cards', '.main-cards-item', '.result-count','main-cards-item-active');
+  crimeVoting('#crime', '.progress-bar', '.main-cards', '.main-cards-item', '.result-count', 'main-cards-item-active');
 
-  reset(cardState, '#reset', '.main-cards', '.main-cards-item', '.result-count', '.progress-bar');
+  reset(cardState, '#reset', '.custom', '.main', '.main-cards', '.main-cards-item', '.result-count', '.progress-bar');
 
 });

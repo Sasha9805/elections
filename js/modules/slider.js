@@ -26,6 +26,7 @@ function slider(state, customStyleSelector, sliderSelector, sliderColorSelector,
     state[attrName] = slideIndex;
 
   });
+  
   sliderNext.addEventListener('click', () => {
 
     if (slideIndex === slideEnd) {

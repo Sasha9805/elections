@@ -1,6 +1,25 @@
-function crimeVoting(btnSelector, progressSelectorBarsSelector, cardsSelector, cardSelector, resultSelector) {
+function crimeVoting(btnSelector, progressSelectorBarsSelector, cardsSelector, cardSelector, 
+  resultSelector, activeClass) {
 
   const btnVote = document.querySelector(btnSelector);
+
+  function getArrOfResults(firstResult, secondResult, thirdResult) {
+    if (secondResult < 98) {
+      const res = Math.floor(secondResult * 1.25);
+      if (res >= 100) {
+        secondResult = 98;
+        firstResult = 1;
+        thirdResult = 1;
+      } else {
+        const rest = 100 - res;
+        secondResult = res;
+        firstResult = Math.floor(Math.random() * rest);
+        thirdResult = rest - firstResult;
+      }
+    }
+
+    return [firstResult, secondResult, thirdResult];
+  }
 
   btnVote.addEventListener('click', () => {
 
@@ -21,9 +40,9 @@ function crimeVoting(btnSelector, progressSelectorBarsSelector, cardsSelector, c
     progressBars.forEach((bar, ind) => {
       bar.style.height = arr[ind] + '%';
       if (arr[ind] == max) {
-        allCards[ind].classList.add('main-cards-item-active');
+        allCards[ind].classList.add(activeClass);
       } else {
-        allCards[ind].classList.remove('main-cards-item-active');
+        allCards[ind].classList.remove(activeClass);
       }
     });
 
@@ -33,24 +52,6 @@ function crimeVoting(btnSelector, progressSelectorBarsSelector, cardsSelector, c
 
   });
 
-}
-
-function getArrOfResults(firstResult, secondResult, thirdResult) {
-  if (secondResult < 98) {
-    const res = Math.floor(secondResult * 1.25);
-    if (res >= 100) {
-      secondResult = 98;
-      firstResult = 1;
-      thirdResult = 1;
-    } else {
-      const rest = 100 - res;
-      secondResult = res;
-      firstResult = Math.floor(Math.random() * rest);
-      thirdResult = rest - firstResult;
-    }
-  }
-
-  return [firstResult, secondResult, thirdResult];
 }
 
 export default crimeVoting;
